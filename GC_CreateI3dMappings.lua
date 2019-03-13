@@ -202,16 +202,16 @@ end
 function GC_CreateI3dMappings.createMappings(numberSelected, rootNode, createAll)
 	if printToXML then
 		if directory ~= nil and directory ~= "" then
-			g_file = createFile(directory .. "/i3dMapping.xml", 0)
-			if g_file ~= 0 then
-				fileWrite(g_file, '\n<i3dMappings>\n')
+			g_i3dMappingFile = createFile(directory .. "/i3dMapping.xml", 0)
+			if g_i3dMappingFile ~= nil and g_i3dMappingFile ~= 0 then
+				fileWrite(g_i3dMappingFile, '\n<i3dMappings>\n')
 
 				if createAll then
 					for node, index in pairs (GC_CreateI3dMappings.idToIndex) do
 						if index ~= nil then
 							local name = GC_CreateI3dMappings.getMappingName(node)
 							local text = '    <i3dMapping id="' .. name .. '" node="' .. index .. '"/>\n'
-							fileWrite(g_file, text)
+							fileWrite(g_i3dMappingFile, text)
 						end
 					end
 				else
@@ -223,7 +223,7 @@ function GC_CreateI3dMappings.createMappings(numberSelected, rootNode, createAll
 							if index ~= nil then
 								local name = GC_CreateI3dMappings.getMappingName(ids[i])
 								local text = '    <i3dMapping id="' .. name .. '" node="' .. index .. '" />\n'
-								fileWrite(g_file, text)
+								fileWrite(g_i3dMappingFile, text)
 							end
 						end
 					else
@@ -234,16 +234,16 @@ function GC_CreateI3dMappings.createMappings(numberSelected, rootNode, createAll
 							if index ~= nil then
 								local name = GC_CreateI3dMappings.getMappingName(node)
 								local text = '    <i3dMapping id="' .. name .. '" node="' .. index .. '" />\n'
-								fileWrite(g_file, text)
+								fileWrite(g_i3dMappingFile, text)
 							end
 						end
 					end
 				end;
 
-				fileWrite(g_file, '</i3dMappings>\n')
+				fileWrite(g_i3dMappingFile, '</i3dMappings>\n')
 
-				delete(g_file)
-				g_file = 0
+				delete(g_i3dMappingFile)
+				g_i3dMappingFile = nil
 
 				print(string.format("Info: 'i3dMapping.xml' successfully created at '%s'", directory))
 			else
