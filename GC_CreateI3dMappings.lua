@@ -39,7 +39,7 @@ local allowPrintAll = true
 local printToXML = false
 
 -- Example: "C:\Users\YOURNAME\Desktop"
-local directory = "C:/Users/ALAL/Desktop"
+local directory = ""
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 --
