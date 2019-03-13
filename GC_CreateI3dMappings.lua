@@ -38,7 +38,7 @@ local allowPrintAll = true
 -- Important: This file will be overwritten each time the script is run.
 local printToXML = false
 
--- Example: "C:\Users\YOURNAME\Desktop"
+-- Example: "C:/Users/YOURNAME/Desktop"
 local directory = ""
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
